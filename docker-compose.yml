@@ -1,0 +1,25 @@
+# Copyright VMware, Inc.
+# SPDX-License-Identifier: APACHE-2.0
+version: '3.9'
+services:
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5435:5432
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=teste123
+      - POSTGRES_USER=teste
+      - POSTGRES_DB=interview
+
+networks:
+  app-tier:
+    driver: bridge
+
+volumes:
+  postgresql_data:
+    driver: local
+
+
+
